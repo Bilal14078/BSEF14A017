@@ -1,0 +1,90 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head>
+    <title>Sign in </title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        div.loginDiv {
+            max-width: 400 px;
+            margin: auto;
+            position: relative;
+            border: 1px solid black;
+            margin-top: 80px;
+            margin-bottom: 100px;
+            margin-right: 400px;
+            margin-left: 400px;
+            background-color: #FFD12A;
+            text-align: center;
+        }
+
+        body {
+            background-image: url("~/ab.jpg" );
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        img {
+            border-radius: 50%;
+        }
+
+        input[type=email], input[type=password] {
+            width: 60%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 50%;
+            background-color: #000033;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            input[type=submit]:hover {
+                background-color: #000080;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="loginDiv">
+        <h1>GAMEHUB ACCOUNTS</h1>
+        <img src="~/1.png" alt="User" width="200" height="200">
+
+        <form name="login" action="/Home/signIn1">
+            <br>Email <br>
+            <input type="Email" name="user" required> <br><br>
+            Password <br>
+            <input type="password" name="pwd" required><br><br>
+            <input type="submit" value="Log In">
+        </form>
+        <br>
+        @Html.ActionLink("Create new Account", "signUp", "Home")</li>
+
+
+
+
+    </div>
+</body>
+</html>
+

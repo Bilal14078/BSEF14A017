@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "insertProduct";
+    Layout = "~/Views/Shared/myLayout.cshtml";
+}
+
+
+
+<div class="container">
+    <h1>Enter New Product Information</h1>
+    <form action="~/products/inserted" method="post" enctype="multipart/form-data">
+
+        Name: <input type="text" name="pname" /><br/><br />
+        Price: <input type="text" name="price" /><br/><br/>
+        Category: <select name="category">
+            @{
+                gamesHubDbEntities context = new gamesHubDbEntities();
+
+                List<category> catList = context.categories.ToList();
+                for (int i = 0; i < catList.Count; i++)
+                {
+                    <option value='@catList[i].cid'> @catList[i].cname</option>
+
+                }
+            }
+        </select>
+        <br /><br />
+        Description: <input type ="text" name ="desc" /> <br /><br />
+        Keywords(Comma Separated): <input type = "text" name ="keyw" ></input><br /><br />
+        Region: <select name = "region" >
+
+
+        @{
+            List<region> regionList = context.regions.ToList();
+            foreach (var reg in regionList)
+            {
+                <option value='@reg.rid'> @reg.rname</option>
+
+            }
+
+        }
+</select> <br /><br />
+
+            Image 1: <input type="file" name="img1" id="img1" /><br />
+            Image 2: <input type="file" name="img2" id="img2"/><br />
+         
+<input type="submit" name="insert" value="Insert"></input><br /><br />
+
+            </form>
+
+            </div>
+
+<script src="~/js/jquery.js"></script>
+<script src="~/js/bootstrap.min.js"></script>

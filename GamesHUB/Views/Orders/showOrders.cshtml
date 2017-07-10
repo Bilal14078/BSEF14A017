@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "showOrders";
+    Layout = "~/Views/Shared/myLayout.cshtml";
+}
+
+
+    <div class="feedback main-grid-border">
+        <div class="container">
+            <h2 class="w3-head">Your Orders</h2>
+            <div class="feed-back">
+
+                <div class="feed-back-form">
+                    @{
+                        gamesHubDbEntities context = new gamesHubDbEntities();
+                        String email = Request.QueryString["email"];
+                        List<order> orderList = context.orders.ToList();
+                        int n = 1;
+                        for (int i = 0; i < orderList.Count; i++)
+                        {
+                            if (orderList[i].u_email == email)
+                            {
+                                <h1>order # @n</h1>
+                                <center>
+
+                                    <form>
+
+
+                                        <b>  Name</b>  <input type="text" value=@orderList[i].u_name name="fn" style="color: red" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'First Name';}" disabled />
+                                        Order Date:<input type="text" value=@orderList[i].o_date name="date" style="color: red" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" disabled />
+                                        Product ID: <input type="text" value=@orderList[i].p_id name="pid" style="color: red" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone No';}" disabled />
+                                        Delivery Status:  <input type="text" style="color: red" value=@orderList[i].o_deliveryStatus name="pid" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Product ID';}" disabled />
+
+
+                                    </form>
+
+                                </center> <hr>
+                                n++;
+
+
+                            }
+
+                            else if (orderList[i].u_email != email && n == 1)
+                            {
+                                <h3> No Orders Found for this Email</h3>
+                                i = orderList.Count+1;
+                            }
+                            else
+                            {
+
+                            }
+
+                        }
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+

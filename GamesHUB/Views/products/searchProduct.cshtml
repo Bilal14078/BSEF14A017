@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "searchProduct";
+    Layout = "~/Views/Shared/myLayout.cshtml";
+}
+
+<center><h2 style="color:#064ffc">Results</h2></center>
+<div class="container">
+    @{
+
+        String keyWord = Request.QueryString["key"];
+        gamesHubDbEntities context = new gamesHubDbEntities();
+
+        // List<product> productList = context.products.ToList();
+        var prodList = context.products.Where(p => p.p_keywords == keyWord);//linq query with where clause
+        if (prodList.Count()==0 || keyWord == "")
+        {
+            <br /> <br />
+            <h2 style="text-align:left">No such product found</h2>
+            <br /> <br />  <br /> <br /> <br />  <br />  <br />  <br />
+        }
+        foreach (var prod in prodList)
+        {
+            <div id='oneprod'>
+
+                <a href='/products/details?pid=@prod.p_id'>
+                    <h4>@prod.p_name</h4>
+                    @{
+                        string mimeType = "image/jpg";
+                        string base64 = Convert.ToBase64String(prod.p_img1);
+                        String prodImage = string.Format("data:{0};base64,{1}", mimeType, base64);
+
+                    }
+                    <img src="@prodImage" />
+                </a>
+                <p style='font-size:20px;'>Rs. @prod.p_price</p>
+                <button>@Html.ActionLink("Order", "Order", "Orders")</button>
+            </div>
+
+        }
+
+    }
+</div>

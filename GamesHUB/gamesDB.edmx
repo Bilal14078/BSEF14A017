@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="gamesDb.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="accounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="categories">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cname" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="feedback">
+          <Key>
+            <PropertyRef Name="f_Id" />
+          </Key>
+          <Property Name="f_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="f_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="l_name" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="comment" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="o_id" />
+          </Key>
+          <Property Name="o_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="o_date" Type="datetime" Nullable="false" />
+          <Property Name="p_id" Type="int" Nullable="false" />
+          <Property Name="u_name" Type="varchar" MaxLength="50" />
+          <Property Name="u_email" Type="varchar" MaxLength="50" />
+          <Property Name="u_phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_address" Type="varchar(max)" />
+          <Property Name="o_payment" Type="int" />
+          <Property Name="o_paymentStatus" Type="varchar" MaxLength="50" />
+          <Property Name="o_deliveryStatus" Type="varchar" MaxLength="50" />
+          <Property Name="p_quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="p_id" />
+          </Key>
+          <Property Name="p_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="p_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="p_price" Type="int" Nullable="false" />
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="p_desc" Type="varchar" MaxLength="50" />
+          <Property Name="p_keywords" Type="varchar" MaxLength="50" />
+          <Property Name="p_img1" Type="image" Nullable="false" />
+          <Property Name="p_img2" Type="image" />
+          <Property Name="region" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="regions">
+          <Key>
+            <PropertyRef Name="rid" />
+          </Key>
+          <Property Name="rid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rname" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="gamesDbStoreContainer">
+          <EntitySet Name="accounts" EntityType="Self.accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="feedback" EntityType="Self.feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="regions" EntityType="Self.regions" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gamesDb" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="region">
+          <Key>
+            <PropertyRef Name="rid" />
+          </Key>
+          <Property Name="rid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="gamesHubDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accounts" EntityType="Self.account" />
+          <EntitySet Name="categories" EntityType="Self.category" />
+          <EntitySet Name="regions" EntityType="Self.region" />
+          <EntitySet Name="feedbacks" EntityType="gamesDb.feedback" />
+          <EntitySet Name="orders" EntityType="gamesDb.order" />
+          <EntitySet Name="products" EntityType="gamesDb.product" />
+        </EntityContainer>
+        <EntityType Name="feedback">
+          <Key>
+            <PropertyRef Name="f_Id" />
+          </Key>
+          <Property Name="f_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="f_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="l_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="o_id" />
+          </Key>
+          <Property Name="o_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="o_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="p_id" Type="Int32" Nullable="false" />
+          <Property Name="u_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="u_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="u_phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="u_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="o_payment" Type="Int32" />
+          <Property Name="o_paymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="o_deliveryStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="p_quantity" Type="Int32" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="p_id" />
+          </Key>
+          <Property Name="p_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="p_price" Type="Int32" Nullable="false" />
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="p_desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="p_keywords" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="p_img1" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="p_img2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="region" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="gamesDbStoreContainer" CdmEntityContainer="gamesHubDbEntities">
+          <EntitySetMapping Name="accounts">
+            <EntityTypeMapping TypeName="gamesDb.account">
+              <MappingFragment StoreEntitySet="accounts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="gamesDb.category">
+              <MappingFragment StoreEntitySet="categories">
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="cname" ColumnName="cname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="regions">
+            <EntityTypeMapping TypeName="gamesDb.region">
+              <MappingFragment StoreEntitySet="regions">
+                <ScalarProperty Name="rid" ColumnName="rid" />
+                <ScalarProperty Name="rname" ColumnName="rname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="feedbacks">
+            <EntityTypeMapping TypeName="gamesDb.feedback">
+              <MappingFragment StoreEntitySet="feedback">
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="l_name" ColumnName="l_name" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="f_Id" ColumnName="f_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="gamesDb.order">
+              <MappingFragment StoreEntitySet="orders">
+                <ScalarProperty Name="p_quantity" ColumnName="p_quantity" />
+                <ScalarProperty Name="o_deliveryStatus" ColumnName="o_deliveryStatus" />
+                <ScalarProperty Name="o_paymentStatus" ColumnName="o_paymentStatus" />
+                <ScalarProperty Name="o_payment" ColumnName="o_payment" />
+                <ScalarProperty Name="u_address" ColumnName="u_address" />
+                <ScalarProperty Name="u_phone" ColumnName="u_phone" />
+                <ScalarProperty Name="u_email" ColumnName="u_email" />
+                <ScalarProperty Name="u_name" ColumnName="u_name" />
+                <ScalarProperty Name="p_id" ColumnName="p_id" />
+                <ScalarProperty Name="o_date" ColumnName="o_date" />
+                <ScalarProperty Name="o_id" ColumnName="o_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="gamesDb.product">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="p_img2" ColumnName="p_img2" />
+                <ScalarProperty Name="p_img1" ColumnName="p_img1" />
+                <ScalarProperty Name="p_keywords" ColumnName="p_keywords" />
+                <ScalarProperty Name="p_desc" ColumnName="p_desc" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="p_price" ColumnName="p_price" />
+                <ScalarProperty Name="p_name" ColumnName="p_name" />
+                <ScalarProperty Name="p_id" ColumnName="p_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

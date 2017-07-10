@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "orderConfirm";
+    Layout = "~/Views/Shared/myLayout.cshtml";
+}
+<h1 style="color:#a80808">Order Details</h1>
+<ul>
+   
+        @{
+            gamesHubDbEntities context = new gamesHubDbEntities();
+            List<order> orderList = context.orders.ToList();
+            order lastOrder = orderList[orderList.Count - 1];//to get last order in the list or table
+            <li>Order ID : @lastOrder.o_id</li>
+            <li>Order Date : @lastOrder.o_date</li>
+            <li>Delivery Address : @lastOrder.u_address</li>
+            <li>Total Amount :Rs. @lastOrder.o_payment/-</li>
+            <li>Payment Method: Cash on Delivery</li>
+            <li>Delivery Status : @lastOrder.o_deliveryStatus</li>
+        }
+
+
+</ul>
+<br /><br />
+<strong>Note:</strong><p>Our correspondent will contact you shortly.Your Order will be deliver within two working days</p>
+<br /><br /><br />

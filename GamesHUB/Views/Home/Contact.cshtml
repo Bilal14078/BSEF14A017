@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/myLayout.cshtml";
+}
+<style> 
+address{
+
+    font-size:20px;
+    font-family:'Times New Roman', Times, serif;
+    color:#fe771d;
+
+
+}
+
+</style>
+<address>
+    Game Hub Sadeeq Trade <br />
+    Center Lahore, shop#95<br />
+    <abbr title="Phone">Ph:</abbr>
+    0423.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="#">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="#">Marketing@example.com</a>
+</address>
+
+
+<div class="feedback main-grid-border">
+    <div class="container">
+        <h2 class="w3-head">Feedback</h2>
+        <div class="feed-back">
+            <h3>Tell us what you think of us</h3>
+            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+            <div class="feed-back-form">
+                <center>
+                    <form action="/Home/sendFeedback">
+                        <span>User Details</span>
+                        <input type="text" value="First Name" name="fn" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'First Name';}">
+                        <input type="text" value="Last Name" name="ln" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Last Name';}">
+                        <input type="text" value="Email" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
+                        <span>Is there anything you would like to tell us?</span>
+
+                        <textarea name="txt" runat="server" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
+
+                        <input type="submit" value="submit">
+
+                    </form>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

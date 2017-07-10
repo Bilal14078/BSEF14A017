@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/myLayout.cshtml";
+
+}
+
+
+<div class="feedback main-grid-border">
+    <div class="container">
+        <h2 class="w3-head">Fill out order form</h2>
+        <div class="feed-back">
+
+            <div >
+                <center>
+                    <form   action="/Orders/orderConfirm" method="post">
+                        <br />
+                        <label style="display:inline-block;width:200px"> Name </label><input style="width:250px" type="text" name="fn" required /><br /><br />
+                        <label  style="display:inline-block;width:200px"> Email </label><input style="width:250px" type="email" name="email" required /><br /><br />
+                        <label  style="display:inline-block;width:200px"> Contact No </label><input style="width:250px" type="text" name="ph" required /><br /><br />
+                        <label  style="display:inline-block;width:200px"> Product ID </label><input style="width:250px" type="text" name="pid" value=@Request.QueryString["pid"]  readonly/><br /><br />
+                       
+                            @{
+                                gamesHubDbEntities context = new gamesHubDbEntities();
+                                int prodId = Convert.ToInt32(Request.QueryString["pid"]);
+                                product prod = context.products.Single(p => p.p_id == prodId);
+                                int prodPrice = prod.p_price;
+
+
+                            }
+                            <label  style="display:inline-block;width:200px">Product Quantity </label>
+                            <input  style="width:150px" type="text" id="quantity" name="pq" value="1" readonly />
+                            <button style="margin-left:2em" name="add" id="add" onclick="addFunction(@prodPrice)">+</button>
+                            <button name="minus" id="minus" onclick="minusFunction(@prodPrice)">-</button><br /><br />
+                            <label  style="display:inline-block;width:200px">Total Payable Amount(in Rs.)  </label><input style="width:250px" type="text"  id="txt1" name="payment" value=@prodPrice  readonly/>
+
+                        <br /><br />
+                        <label  style="display:inline-block;width:200px";> How to Pay </label><input style="width:250px" type="Text" value="Payment on Delivery" name="pay" disabled /><br />
+
+                        <br /> <label  style="display:inline-block;width:100px";>Your Address</label><br />
+                        <textarea name="txt" runat="server"  rows="5" cols="60" required></textarea> <br /><br />
+
+                        <input  style="width:10em;height:3em" type="submit" value="Submit">
+
+                    </form>
+                </center>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function addFunction(prdPrice) {
+
+        var val = document.getElementById("quantity").value;
+        val = parseInt(val) + 1;
+        document.getElementById("quantity").value = val;
+        var totalAmount=prdPrice * val;
+        document.getElementById("txt1").value = totalAmount;
+
+    }
+
+    function minusFunction(prdPrice) {
+        var val = document.getElementById("quantity").value;
+        val = parseInt(val);
+        var totalAmount=prdPrice * val;
+        document.getElementById("txt1").value = totalAmount;
+        if (val > 1) {
+            document.getElementById("quantity").value = val - 1;
+            document.getElementById("txt1").value = totalAmount;
+
+        }
+    }
+</script>

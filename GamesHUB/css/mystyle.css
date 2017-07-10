@@ -1,0 +1,132 @@
+
+
+#topnavc {
+background-color:#003791;
+}
+#topnavc ul li a{
+color:white;
+}
+
+#topnavc ul li a:hover{
+color:#003791;
+background-color:white;
+}
+
+.cats{
+text-align:centre;
+background-color:#66a1ff;
+margin-top:-20px;
+float:auto;
+clear:both;
+}
+
+.container{
+text-align:center;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.cats ul li{
+display: inline-block;
+padding:10px;
+color:white;
+}
+
+.cats ul li:hover{
+text-decoration:none;
+color:#66a1ff;
+background-color:white;
+
+}
+
+
+#oneprod{
+float:left;
+padding:70px;
+}
+
+#oneprod img{
+height:300px;
+width:200px;
+}
+
+button {
+padding: 14px 20px;
+background-color:#66a1ff;
+color:white;
+border-radius:4px;
+border: none;
+box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1.5px 2.5px 0 rgba(0, 0, 0, 0.19);
+}
+
+button:hover{
+background-color:#003791;
+box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1.5px 2.5px 0 rgba(0, 0, 0, 0.19);
+}
+
+#searchbar{
+margin-top:10px; 
+margin-bottom:10px;
+float:right;
+}
+
+input[type=submit]{
+padding: 4px;
+background-color:#66a1ff;
+color:white;
+border-radius:4px;
+border: none;
+box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1.5px 2.5px 0 rgba(0, 0, 0, 0.19);
+}
+
+input[type=submit]:hover{
+background-color:#45a040;
+box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1.5px 2.5px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+input[type=text],input[type=password]{
+border:1px solid #ccc;
+border-radius:4px;
+padding: 4px;  
+box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1.5px 2.5px 0 rgba(0, 0, 0, 0.19);
+}
+
+select {
+border:1px solid #ccc;
+border-radius:4px;
+padding: 4px;  
+box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1.5px 2.5px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+body{
+padding-top: 70px;
+}
+
+#comments{
+border:1px solid blue;
+text-align:left;
+padding:14px;
+border-radius:4px;
+}
+
+#cname{
+border:1px solid black;
+padding:5px;
+border-radius:4px;
+}
+
+#ccomm{
+border:1px solid black;
+padding:5px;
+border-radius:4px;
+}
+
+hr{
+border:0.5px dashed black;
+padding:0px;
+}

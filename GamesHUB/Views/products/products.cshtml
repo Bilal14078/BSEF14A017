@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "products";
+    Layout = "~/Views/Shared/myLayout.cshtml";
+}
+
+<div class="cats">
+    <ul>
+        @{
+            gamesHubDbEntities context = new gamesHubDbEntities();
+
+            List<category> catList = context.categories.ToList();
+            for (int i = 0; i < catList.Count; i++)
+            {
+                <a href='/products/products?cid=@catList[i].cid'><li>@catList[i].cname</li></a>
+            }
+        }
+
+    </ul>
+</div>
+
+<div class="container">
+
+    <h1>Latest Items</h1>
+    @{
+        String category = Request.QueryString["cid"];
+        int catID = Convert.ToInt32(category);
+        if (category == null)
+        {
+
+
+            List<product> prodList = context.products.ToList();
+            for (int i = 0; i < prodList.Count; i++)
+            {
+
+                <div id='oneprod'>
+                  @{ 
+                      string mimeType = "image/jpg";
+                      string base64 = Convert.ToBase64String(prodList[i].p_img1);
+                      String prodImage=string.Format("data:{0};base64,{1}", mimeType, base64);
+                    }
+                                    
+                    <a href='/products/details?pid= @prodList[i].p_id'>
+                        <h4>@prodList[i].p_name</h4>
+                     
+                        <img src="@prodImage"/> 
+                    </a>
+
+                    <p style='font-size:20px;'>Rs. @prodList[i].p_price</p>
+                    <form action="/Orders/Order">
+                        <input type="hidden" name="pid" value=@prodList[i].p_id />
+                        <input style="width:9em;height:3em;" type="submit" value=" Order " />
+
+
+                    </form>
+
+                </div>
+                          }
+                      }
+                      else
+                      {
+                          var prodList = from prd in context.products
+                                         where prd.c_id == catID
+                                         select prd;
+                          foreach (var prod in prodList)
+                          {
+                             <div id='oneprod'>
+
+                             <a href='/products/details?pid=@prod.p_id'>
+                                  <h4>@prod.p_name</h4>
+                                   @{ 
+                                       string mimeType = "image/jpg";
+                                       string base64 = Convert.ToBase64String(prod.p_img1);
+                                       String prodImage = string.Format("data:{0};base64,{1}", mimeType, base64);
+
+                                   }
+                              <img src="@prodImage" />
+                              </a>
+                             <p style='font-size:20px;'>Rs. @prod.p_price</p>
+                                 <form action="/Orders/Order">
+                                     <input type="hidden" name="pid" value=@prod.p_id />
+                                     <input style="width:9em;height:3em;" type="submit" value=" Order " />
+
+
+                                 </form>
+                             </div>
+                             
+                          }
+
+                      }
+
+
+    }
+</div>
+
+

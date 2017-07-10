@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "details";
+    Layout = "~/Views/Shared/myLayout.cshtml";
+}
+
+
+<div class="container">
+    <div id="oneprod">
+        <h1>Product Details</h1>
+        @{
+            String prodid = Request.QueryString["pid"];
+
+            int pid = Convert.ToInt32(prodid);
+
+            gamesHubDbEntities context = new gamesHubDbEntities();
+            var myProduct = context.products.Single(prod => prod.p_id == pid);
+            <h2>@myProduct.p_name</h2>
+            <h4>Product ID = @myProduct.p_id</h4>
+
+            string mimeType = "image/jpg";
+            string base64 = Convert.ToBase64String(myProduct.p_img1);
+            String prodImage = string.Format("data:{0};base64,{1}", mimeType, base64);
+            <img src="@prodImage" />
+                <p style='font-size:20px;'>Price: Rs. @myProduct.p_price </p>
+                    <p style='font-size:20px;'>Condition: @myProduct.p_desc</p>
+
+            //  <p style='font-size:20px;'>Region: @myProduct.region</p>
+            // <button>@Html.ActionLink("Order", "Order", "Orders")</button>
+            <form action="/Orders/Order">
+                <input type="hidden" name="pid" value=@myProduct.p_id />
+                <input style="width:9em;height:3em;" type="submit" value="  Order  " />
+
+
+            </form>
+
+        }
+
+
+    </div>
+
+
+
+
+</div>
+
+    
+
+
+
+<script src="~/js/jquery.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+
+

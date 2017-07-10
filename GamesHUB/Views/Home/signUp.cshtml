@@ -1,0 +1,40 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head>
+    <title>Sign Up</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' href='~/css/signUpStyle.css'>
+</head>
+
+
+<body>
+
+    <div class="loginDiv">
+        <h1>Create Your Account</h1>
+        <form name="login" action="/Home/signUp1">
+            <br>Email <br>
+            <input type="email" name="user" required> <br><br>
+            Password <br>
+            <input type="password" name="pwd" required><br><br>
+            Repeat Password <br>
+            <input type="password" name="pwd1" required><br><br>
+            <input type="submit" value="Create">
+        </form><br>
+
+    </div>
+
+</body>
+
+</html>
+

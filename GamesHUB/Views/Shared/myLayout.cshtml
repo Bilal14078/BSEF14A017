@@ -1,0 +1,88 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css"><!-- bootstrap-CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap-select.css"><!-- bootstrap-select-CSS -->
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" /><!-- style.css -->
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" /><!-- fontawesome-CSS -->
+    <link rel="stylesheet" href="~/css/menu_sideslide.css" type="text/css" media="all"><!-- Navigation-CSS -->
+
+    <title>GAME HUB</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/mystyle.css" rel="stylesheet">
+    <link href="~/css/slideShow.css" rel="stylesheet">
+   
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="topnavc">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/Home/Index"><img src="~/img/logo.png" height=100% /></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Products", "products", "products")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("View Orders", "viewOrders", "Orders")</li>
+
+                </ul>
+                <div id="searchbar">
+                    <form action="/Products/searchProduct" enctype="multipart/form-data">
+                        <input type="text" name="key" placeholder="Search" />
+                        <input type="submit" name="subsearch" value="Go" />
+                    </form>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li style="text-align:right">@RenderSection("login", false)</li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+    </nav>
+    @RenderBody()
+
+    <footer>
+
+        <div class="agileits-footer-bottom text-center">
+            <div class="container">
+                <div class="w3-footer-logo">
+                    <h1><a href="/Home/Index"><span>Games</span>Hub</a></h1>
+                </div>
+                <div class="w3-footer-social-icons">
+                    <ul>
+                        <li><a class="facebook" href="https://www.facebook.com/Gameshub.co.ke/"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>
+                        <li><a class="twitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a></li>
+                        <li><a class="flickr" href="#"><i class="fa fa-flickr" aria-hidden="true"></i><span>Flickr</span></a></li>
+                        <li><a class="googleplus" href="#"><i class="fa fa-google-plus" aria-hidden="true"></i><span>Google+</span></a></li>
+                        <li><a class="dribbble" href="#"><i class="fa fa-dribbble" aria-hidden="true"></i><span>Dribbble</span></a></li>
+                    </ul>
+                </div>
+                <div class="copyrights">
+                    <p> © 2017 GameHub. All Rights Reserved </p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+    </footer>
+</body>
+</html>
